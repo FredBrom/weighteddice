@@ -25,9 +25,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c -I$(INCLUDE_DIR) $< -o $@
 
 # Compile .c files in test to binaries
-$(BIN_DIR)/%: $(TEST_FILES) 
+$(BIN_DIR)/%: $(TESTS_DIR)/%.c
 	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) $(OBJ_FILES) $< -o $@
-
 
 clean:
 	rm -f $(OBJ_FILES)

@@ -20,8 +20,13 @@ int initializeWeightedDice(WeightedDice *dice, int len, double *weights)
   /* Randomize seed from RNG */
   srand(time(NULL));
   
+  /* Get partial sum of weights.*/
   for (int i=0; i<len; i++)
   {
+    /* Verify if the weight is greater than zero
+       if less than zero, consider zero.        */
+    if (weights[i] < 0.0)
+      weights[i] = 0.0;
     sum += weights[i];
     dice->sumWeights[i] = sum;
   }
